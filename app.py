@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Flask, jsonify
+from flask import Flask, jsonify, json
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -37,4 +37,4 @@ def get_stats(client_id):
     #order columns
     result = data[['client_id','count','min_inspection_date', 'max_inspection_date', 'counties']]
 
-    return jsonify(result.to_dict())
+    return result.iloc[0].to_json()
