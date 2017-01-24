@@ -1,0 +1,9 @@
+<ul class=client_list>
+{% for client in client_list['client_id'].iteritems() %}
+<ul>
+<a href="{{ url_for('make_map', client_id=client[1])}}">{{ client[1] }}</a>
+</ul>
+{% else %}
+  <li><em>No clients, Socrata is down, or you should reconsider your life choices.</em>
+{% endfor %}
+</ul>
