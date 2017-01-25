@@ -40,7 +40,6 @@ def get_stats(client_id):
 
 def get_points(client_id):
     url = 'https://data.pa.gov/resource/vsaj-gjez.json?$select=client_id,latitude,longitude,farm,client&client_id='+str(client_id)
-    print url
     points = pd.read_json(url)
     return points
 
@@ -50,7 +49,6 @@ def list_view():
     #TODO drop_duplicates
     raw_client_list=pd.read_json(url)
     client_list = raw_client_list.drop_duplicates().to_dict()
-    print client_list
     return render_template('client_list.html', client_list=client_list)
 
 @app.route('/client_id/<int:client_id>')
@@ -69,10 +67,8 @@ def make_map(client_id):
     client_map.fit_bounds([sw, ne])
 
     for point in points.itertuples():
-        print point.latitude, point.longitude
         detail_url = url_for('detail_view', client_id=point.client_id)
         html = '<embed src=http://localhost:5000%s>' % detail_url
-        print html
         iframe = folium.element.IFrame(html=html, width=300, height=100)
         popup = folium.Popup(iframe, max_width=2650)
         folium.Marker([point.latitude, point.longitude], popup=point.farm).add_to(client_map)
