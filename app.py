@@ -29,8 +29,8 @@ def get_stats(client_id):
     #order columns
     result = data[['client_id','count','min_inspection_date', 'max_inspection_date', 'counties']]
     #truncate timestamps for display
-    result['min_inspection_date']=result['min_inspection_date'].dt.strftime('%d/%m/%Y')
-    result['max_inspection_date']=result['max_inspection_date'].dt.strftime('%d/%m/%Y')
+    result['min_inspection_date']=result['min_inspection_date'].dt.strftime('%m/%d/%Y')
+    result['max_inspection_date']=result['max_inspection_date'].dt.strftime('%m/%d/%Y')
 
     #result['count']=result['count'].astype(int)
     result_json=result.iloc[0]
@@ -46,7 +46,6 @@ def get_points(client_id):
 @app.route('/client_id/')
 def list_view():
     url='https://data.pa.gov/resource/vsaj-gjez.json?$select=client_id'
-    #TODO drop_duplicates
     raw_client_list=pd.read_json(url)
     client_list = raw_client_list.drop_duplicates().to_dict()
     return render_template('client_list.html', client_list=client_list)
