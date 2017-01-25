@@ -26,7 +26,6 @@ def get_stats(client_id):
     #clean up the unnecessary hierarchical indexes
     data.columns = data.columns.droplevel(0)
     data = data.reset_index(0, drop=True)
-
     #order columns
     result = data[['client_id','count','min_inspection_date', 'max_inspection_date', 'counties']]
     #truncate timestamps for display
@@ -35,10 +34,7 @@ def get_stats(client_id):
     #result = data.to_dict(orient='records')
     #print data.to_dict(orient='records')
     result_json=result.iloc[0].to_json()
-
-
     #response=jsonify(json.loads(result_dict))
-
     #return jsonify(client_id=data1['client_id'], count=data1['count'], min_inspection_date= data['min_inspection_date'], counties=data['counties'])
     return result_json
 
@@ -57,8 +53,6 @@ def list_view():
     print client_list
     return render_template('client_list.html', client_list=client_list)
 
-
-
 @app.route('/client_id/<int:client_id>')
 def detail_view(client_id):
     response=json.loads(get_stats(client_id))
@@ -71,7 +65,7 @@ def detail_view(client_id):
         'counties': response['counties']
         }
     print data
-    return jsonify(**data)
+    return jsonify(** data)
 
 
 @app.route('/client_id/<int:client_id>/map')
