@@ -1,2 +1,6 @@
-
-{{ detail_view.data|tojson}}
+<dl>
+      {% for key, value in detail_view.iteritems() %}
+            <dt>{{ key }}</dt>
+            <dd>{{ value }}</dd>
+      {% endfor %}
+</dl>
