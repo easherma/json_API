@@ -1,5 +1,5 @@
 <ul class=client_list>
-{% for client in client_list['client_id'].iteritems() %}
+{% for client in client_list['client_id'].items() %}
 <ul>
 <a href="{{ url_for('make_map', client_id=client[1])}}">{{ client[1] }}</a>
 </ul>

@@ -17,7 +17,7 @@ The app uses Python and some libraries, most notably Flask and Folium.
 
 This will run a local server, here are some example endpoints:
 * ``` http://localhost:5000/client_id/ ``` a rough list of permalinks by client_id. Clicking on each will take you to the map endpoint for that client.
-* ``` http://localhost:5000/client_id/43513/ ``` summary data as a JSON object
+* ``` http://localhost:5000/client_id/43513 ``` summary data as a JSON object
 * ``` http://localhost:5000/client_id/43513/map ``` gets all the points for a given client and makes a map like so:
 
 ![Screenshot](static/folium.PNG)
