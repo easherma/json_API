@@ -33,7 +33,7 @@ def get_stats(client_id):
     result['max_inspection_date']=result['max_inspection_date'].dt.strftime('%d/%m/%Y')
     #result = data.to_dict(orient='records')
     #print data.to_dict(orient='records')
-    result_json=result.iloc[0].to_json()
+    result_json=result.iloc[0]
     #response=jsonify(json.loads(result_dict))
     #return jsonify(client_id=data1['client_id'], count=data1['count'], min_inspection_date= data['min_inspection_date'], counties=data['counties'])
     return result_json
