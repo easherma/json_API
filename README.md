@@ -13,7 +13,7 @@ The app uses Python and some libraries, most notably Flask and Folium.
 * clone the repo
 * create a virtualenv.
 * ```pip install -r requirements.txt```
-* ```export FLASK_APP=hello.py``` (set instead of export if on Windows) & ```flask run```
+* ```export FLASK_APP=app.py``` (set instead of export if on Windows) & ```flask run```
 
 This will run a local server, here are some example endpoints:
 * ``` http://localhost:5000/client_id/ ``` a rough list of permalinks by client_id. Clicking on each will take you to the map endpoint for that client.
