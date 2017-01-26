@@ -5,7 +5,7 @@ from pprint import pprint
 from app import app
 
 
-class APITestCase(unittest.TestCase):
+class MatchDataTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         """
@@ -32,6 +32,29 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(json.loads(self.response.data)['client_id'], self.from_source['client_id'][0])
     def test_client_count_match(self):
         self.assertEqual(json.loads(self.response.data)['count'], self.count['count_1'][0])
+
+class APIRouteTestCase(unittest.TestCase):
+    """test routes with known entries """
+    #TODO this is a very lazy test that rely on known entries.
+    def setUp(self):
+        app.testing = True
+        self.client = app.test_client()
+
+    def test_client_id_list(self):
+        self.response = self.client.get('/client_id/')
+        self.assertEqual(self.response.status_code, 200)
+
+    def test_client_detail(self):
+        self.response = self.client.get('/client_id/279986')
+        self.assertEqual(self.response.status_code, 200)
+
+    def test_client_detail_map(self):
+        self.response = self.client.get('/client_id/279986/map')
+        self.assertEqual(self.response.status_code, 200)
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
