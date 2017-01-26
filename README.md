@@ -8,7 +8,7 @@ In this case, we are grabbing data Philedalphia's data portal on oil well inspec
 
 ## Setup
 
-The app uses Python and some libraries, most notably Flask and Folium.
+The app uses Python (3.6) and some libraries, most notably Flask and Folium.
 
 * clone the repo
 * create a virtualenv.
