@@ -34,8 +34,8 @@ class MatchDataTestCase(unittest.TestCase):
         self.assertEqual(json.loads(self.response.data)['count'], self.count['count_1'][0])
 
 class APIRouteTestCase(unittest.TestCase):
-    """test routes with known entries """
-    #TODO this is a very lazy test that rely on known entries.
+    """test routes """
+    #TODO this is a very lazy test that rely on known entries
     def setUp(self):
         app.testing = True
         self.client = app.test_client()
