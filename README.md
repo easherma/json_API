@@ -21,3 +21,7 @@ This will run a local server, here are some example endpoints:
 * ``` http://localhost:5000/client_id/43513/map ``` gets all the points for a given client and makes a map like so:
 
 ![Screenshot](static/folium.PNG)
+
+## Testing
+
+```python test.py```
